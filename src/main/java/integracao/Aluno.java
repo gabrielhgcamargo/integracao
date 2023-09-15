@@ -1,5 +1,6 @@
 package integracao;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Aluno {
@@ -8,27 +9,25 @@ public class Aluno {
 	private float nota2;
 	private float notaFinal;
 	private String voucher;
-	private int cursosConcluidos;
+	private ArrayList<Curso> cursosConcluidos;
+	
+	
+	
+	public Aluno() {
+		super();
+		this.cursosConcluidos = new ArrayList<>();
+	}
 
+	public void addCurso(Curso curso) {
+		cursosConcluidos.add(curso);
+	}
+	
 	public String getVoucher() {
 		return voucher;
 	}
 
-	public int getCursosConcluidos() {
-		return cursosConcluidos;
-	}
-
-	public void setCursosConcluidos(int cursosConcluidos) {
-		this.cursosConcluidos = cursosConcluidos;
-	}
-	
-	public void addCursoConcluido(int cursosConcluidos) {
-		this.cursosConcluidos ++;
-	}
-
 	public int getFrequencia() {
 		return frequencia;
-
 	}
 
 	public void setFrequencia(int frequencia) {
@@ -86,12 +85,12 @@ public class Aluno {
 	}
 
 	public boolean concluiuDozeCursos() {
-        return cursosConcluidos >= 12;
+        return cursosConcluidos.size() >= 12;
     }
 
     public String solicitaProjetosReais() {
         if (!concluiuDozeCursos()) {
-            return "Você precisa concluir mais " + (12 - cursosConcluidos) + " cursos para ser elegível para projetos reais.";
+            return "Você precisa concluir mais " + (12 - cursosConcluidos.size()) + " cursos para ser elegível para projetos reais.";
         } else {
         	voucher = UUID.randomUUID().toString();
             return "Você é elegível para participar de projetos reais. Seu voucher = " + voucher;

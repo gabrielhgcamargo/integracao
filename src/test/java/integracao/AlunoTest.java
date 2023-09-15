@@ -8,6 +8,7 @@ import org.junit.Test;
 public class AlunoTest {
 	
 	Aluno aluno;
+	Curso curso;
 
 
 	@Test
@@ -61,7 +62,10 @@ public class AlunoTest {
 	   @Test
 	    public void testaAlunoNaoConcluiuDozeCursos() { // Teste do método -> AlunoConcluiuDozeCursos()
 		    aluno = new Aluno();
-	        aluno.setCursosConcluidos(11); // Teste criado para FALSE, por isso 10, e não 12.
+		    curso = new Curso();
+		    for(int i = 0; i < 10; i ++) {
+		    	aluno.addCurso(curso);// Teste criado para FALSE, por isso o aluno tem apenas 10 cursos concluidos, e não 12.
+		    }
 	        boolean resultado = aluno.concluiuDozeCursos();
 	        Assert.assertFalse(resultado); // Deve retornar false, pois o aluno não atingiu a marca de 12 cursos.
 	    }
@@ -69,15 +73,20 @@ public class AlunoTest {
 	   @Test
 	    public void testaAlunoConcluiuDozeCursos() { // Teste do método -> AlunoConcluiuDozeCursos()
 		   aluno = new Aluno();
-	        aluno.setCursosConcluidos(12); 
-	        boolean resultado = aluno.concluiuDozeCursos();
-	        Assert.assertTrue(resultado); // Deve retornar true, pois o aluno atingiu a marca de 12 cursos.
+		   curso = new Curso();
+		   for(int i = 0; i < 12; i ++) {
+		    	aluno.addCurso(curso);// Teste criado para TRUE, por isso o aluno tem 12 cursos concluidos.
+		   }
+	       boolean resultado = aluno.concluiuDozeCursos();
+	       Assert.assertTrue(resultado); // Deve retornar true, pois o aluno atingiu a marca de 12 cursos.
 	    }
 
 	    @Test
 	    public void testSolicitaProjetosReaisNaoElegivel() { // Teste do método -> solicitaProjetosReais()
 	    	aluno = new Aluno();
-	        aluno.setCursosConcluidos(10); // Teste criado para retornar como NÃO elegível, por isso 10, e não 12.
+		    for(int i = 0; i < 10; i ++) { // Teste criado para retornar como NÃO elegível, por isso 10, e não 12.
+		    	aluno.addCurso(curso);
+		    } 
 	        String mensagem = aluno.solicitaProjetosReais();
 	        String mensagemEsperada = "Você precisa concluir mais 2 cursos para ser elegível para projetos reais.";
 	        Assert.assertEquals(mensagemEsperada, mensagem);
@@ -88,7 +97,10 @@ public class AlunoTest {
 	    @Test
 	    public void testSolicitaProjetosReaisElegivel() {
 	    	aluno = new Aluno();
-	        aluno.setCursosConcluidos(13); 
+			   curso = new Curso();
+			   for(int i = 0; i < 12; i ++) {
+			    	aluno.addCurso(curso);
+			   }
 	        String mensagem = aluno.solicitaProjetosReais();
 	        String mensagemEsperada = "Você é elegível para participar de projetos reais. Seu voucher = " + aluno.getVoucher();
 	        Assert.assertEquals(mensagemEsperada, mensagem); // Valida se realmente o Aluno é elegível, e o retorno da mensagem + voucher;
