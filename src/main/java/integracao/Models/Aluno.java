@@ -1,4 +1,4 @@
-package integracao;
+package integracao.Models;
 
 import java.util.ArrayList;
 import java.util.UUID;

@@ -5,6 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Assert;
 import org.junit.Test;
 
+import integracao.Models.Aluno;
+import integracao.Models.Curso;
+
 public class AlunoTest {
 	
 	Aluno aluno;

@@ -1,4 +1,4 @@
-package integracao;
+package integracao.Models;
 
 public class Curso {
 	
