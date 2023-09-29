@@ -9,8 +9,6 @@ public class Aluno {
 	private String voucher;
 	private ArrayList<Curso> cursosConcluidos;
 	
-	
-	
 	public Aluno() {
 		super();
 		this.cursosConcluidos = new ArrayList<>();
@@ -18,6 +16,10 @@ public class Aluno {
 
 	public void addCurso(Curso curso) {
 		cursosConcluidos.add(curso);
+	}
+
+		public ArrayList<Curso> getCursosConcluidos() {
+		return cursosConcluidos;
 	}
 	
 	public String getVoucher() {
@@ -36,4 +38,6 @@ public class Aluno {
             return "Você é elegível para participar de projetos reais. Seu voucher = " + voucher;
         }
     }
+
+
 }
