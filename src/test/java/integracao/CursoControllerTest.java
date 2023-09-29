@@ -10,8 +10,7 @@ import integracao.Models.Curso;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Assert;
 import static org.mockito.Mockito.*;
 
 
@@ -29,7 +28,7 @@ public class CursoControllerTest {
         Curso curso = new Curso();
         cursoController.adicionarCurso(curso);
         List<Curso> cursos = cursoController.listarCursos();
-        assertTrue(!cursos.contains(curso));
+        Assert.assertTrue(!cursos.contains(curso));
     }    
 
     @Test
@@ -38,6 +37,6 @@ public class CursoControllerTest {
         cursos.add(new Curso());
         when(cursoController.listarCursos()).thenReturn(cursos);
         List<Curso> resultado = cursoController.listarCursos();
-        assertEquals(cursos, resultado);
+        Assert.assertEquals(cursos, resultado);
     }
 }
