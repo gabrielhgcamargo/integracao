@@ -7,8 +7,6 @@ import org.junit.Test;
 import integracao.Models.Aluno;
 import integracao.Models.Curso;
 
-import java.util.UUID;
-
 public class AlunoTest {
 
     private Aluno aluno;
