@@ -16,8 +16,12 @@ import java.util.List;
 @RequestMapping("/cursos")
 @Tag(name = "Curso Controller")
 public class CursoController {
-    
-    private List<Curso> cursosCadastrados = new ArrayList<>();
+
+    private List<Curso> cursosCadastrados;
+
+    public CursoController() {
+		this.cursosCadastrados = new ArrayList<>();
+	}
 
     @PostMapping
     @Operation(summary = "Realiza o cadastro de cursos.", method = "POST")
