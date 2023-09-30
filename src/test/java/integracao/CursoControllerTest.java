@@ -2,8 +2,6 @@ package integracao;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
-
 import integracao.Controllers.CursoController;
 import integracao.Models.Curso;
 
@@ -20,7 +18,7 @@ public class CursoControllerTest {
 
     @Before
     public void setUp() {
-        cursoController = Mockito.mock(CursoController.class); // Crie um mock do CursoController
+        cursoController = new CursoController();
     }
 
     @Test
@@ -28,14 +26,22 @@ public class CursoControllerTest {
         Curso curso = new Curso();
         cursoController.adicionarCurso(curso);
         List<Curso> cursos = cursoController.listarCursos();
-        Assert.assertTrue(!cursos.contains(curso));
+        Assert.assertTrue(cursos.contains(curso));
     }    
 
     @Test
     public void testListarCursos() {
         List<Curso> cursos = new ArrayList<>();
-        cursos.add(new Curso());
-        when(cursoController.listarCursos()).thenReturn(cursos);
+        Curso curso = new Curso();
+
+        cursos.add(curso);
+        cursos.add(curso);
+        cursos.add(curso);
+
+        cursoController.adicionarCurso(curso);
+        cursoController.adicionarCurso(curso);
+        cursoController.adicionarCurso(curso);
+
         List<Curso> resultado = cursoController.listarCursos();
         Assert.assertEquals(cursos, resultado);
     }
